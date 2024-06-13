@@ -73,23 +73,12 @@ def get_main_image_colors(image: Image):
             hex(int(main_colors[i][2]))[2:],
         ]
 
-        # Convert colors to hex interpretation
-        
-        # for j in range(len(rgb)):
-        #     if len(rgb[j]) == 1:
-        #         rgb[j] = f"0{rgb[j]}"
+        # Convert colors to hex interpretation       
+        for j in range(len(rgb)):
+            if len(rgb[j]) == 1:
+                rgb[j] = f"0{rgb[j]}"
 
-        with open("colors.txt", "a") as f:
-             
-            for j in range(len(rgb)):
-                if len(rgb[j]) == 1:
-                    rgb[j] = f"0{rgb[j]}"
-
-                color_str = (f"#{rgb[0]}" + f"{rgb[1]}" + f"{rgb[2]}").upper()
-
-                f.write(color_str + " ")
-
-            f.write("\n\n")
+        color_str = (f"#{rgb[0]}" + f"{rgb[1]}" + f"{rgb[2]}").upper()
 
 
         # Convert hex color interpretation to pydantic model
