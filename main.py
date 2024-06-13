@@ -1,5 +1,6 @@
 import os
 import io
+import socket
 
 from fastapi import FastAPI, File, UploadFile, HTTPException, Request, status
 from fastapi.responses import HTMLResponse
@@ -78,6 +79,7 @@ def get_main_image_colors(image: Image):
             if len(rgb[j]) == 1:
                 rgb[j] = f"0{rgb[j]}"
 
+        # Combine all chanels to one hex string
         color_str = (f"#{rgb[0]}" + f"{rgb[1]}" + f"{rgb[2]}").upper()
 
 
@@ -123,6 +125,10 @@ async def upload_image(file: UploadFile = File(...)):
     return main_colors
 
 
-# Run the application
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="192.168.0.116", reload=True)
+
+    # Get machine IP address
+    IP_ADDRESS = socket.gethostbyname(socket.gethostname())
+    
+    # Run the application
+    uvicorn.run("main:app", host=IP_ADDRESS, reload=True)

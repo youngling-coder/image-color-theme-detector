@@ -191,7 +191,11 @@
             formData.append('file', file);
             
             try {
-                const response = await fetch('http://192.168.0.116:8000/upload_image', {
+
+                // Get host url
+                const baseUrl = window.location.origin;
+
+                const response = await fetch(`${baseUrl}/upload_image`, {
                     method: 'POST',
                     body: formData
                     });
