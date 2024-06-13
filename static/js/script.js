@@ -50,56 +50,59 @@ uploadButton.addEventListener('click', async () => {
         const response = await fetch(`${baseUrl}/upload_image`, {
             method: 'POST',
             body: formData
-            });
+        });
+        
+        const resultColors = await response.json();
             
-            if (response.ok) {
-                const colors = await response.json();
+        if (response.ok) {
+            
+            colorDisplay.innerHTML = "";
+            
+            for (var i = 0; i < 5; i++) {
+                let color = resultColors[i]["hex_"];
                 
-                colorDisplay.innerHTML = "";
-                
-                for (var i = 0; i < 5; i++) {
-                    let color = colors[i]["hex_"];
-                    
-                    // Create color item to add 
-                    const color_element = document.createElement("div");
-                    color_element.innerHTML = `<h4 style="color: ${color};" class="color-name">${color}</h4>`;
-                    color_element.className = "color-box";
-                    color_element.style.backgroundColor = color;
-                    colorDisplay.appendChild(color_element);
-                }
-                viewer.style.background = `linear-gradient(135deg, ${colors[0]["hex_"]}99, ${colors[1]["hex_"]}99, ${colors[2]["hex_"]}99, ${colors[3]["hex_"]}99, ${colors[4]["hex_"]}99)`;
+                // Create color item to add 
+                const color_element = document.createElement("div");
+                color_element.innerHTML = `<h4 style="color: ${color};" class="color-name">${color}</h4>`;
+                color_element.className = "color-box";
+                color_element.style.backgroundColor = color;
+                colorDisplay.appendChild(color_element);
+            }
+            viewer.style.background = `linear-gradient(135deg, ${resultColors[0]["hex_"]}, ${resultColors[1]["hex_"]}, ${resultColors[2]["hex_"]}, ${resultColors[3]["hex_"]}, ${resultColors[4]["hex_"]})`;
 
-                const colorBoxes = document.querySelectorAll('.color-box');
+            const colorBoxes = document.querySelectorAll('.color-box');
 
-                function rgbToHex(rgb) {
-                    const rgbValues = rgb.match(/\d+/g);
-                    const r = parseInt(rgbValues[0]).toString(16).padStart(2, '0');
-                    const g = parseInt(rgbValues[1]).toString(16).padStart(2, '0');
-                    const b = parseInt(rgbValues[2]).toString(16).padStart(2, '0');
-                    return `#${r}${g}${b}`;
-                }
 
-                colorBoxes.forEach(box => {
-                    // Get the background color of the clicked element
-                    const bgColor = window.getComputedStyle(box).backgroundColor;
+            // Function converts rgb(a, b, c) color string to #123456 format
+            function rgbToHex(rgb) {
+                const rgbValues = rgb.match(/\d+/g);
+                const r = parseInt(rgbValues[0]).toString(16).padStart(2, '0');
+                const g = parseInt(rgbValues[1]).toString(16).padStart(2, '0');
+                const b = parseInt(rgbValues[2]).toString(16).padStart(2, '0');
+                return `#${r}${g}${b}`;
+            }
 
-                    // Convert the RGB color to hex
-                    const hexColor = rgbToHex(bgColor).toLocaleUpperCase();
+            colorBoxes.forEach(box => {
+                // Get the background color of the clicked element
+                const bgColor = window.getComputedStyle(box).backgroundColor;
 
-                    box.addEventListener('click', function () {
+                // Convert the RGB color to hex
+                const hexColor = rgbToHex(bgColor).toLocaleUpperCase();
 
-                        // Copy the hex color to clipboard using hidden textarea
-                        clipboardTextarea.value = hexColor;
-                        clipboardTextarea.select();
-                        document.execCommand('copy');
-                    });
+                box.addEventListener('click', function () {
+
+                    // Copy the hex color to clipboard using hidden textarea
+                    clipboardTextarea.value = hexColor;
+                    clipboardTextarea.select();
+                    document.execCommand('copy');
                 });
+            });
+        } else {
+            if (response.status == 415) {
+                alert(resultColors.detail);
             } else {
-                if (response.status == 403) {
-                    alert("Selected type is not image or not supported!")
-                } else {
-                    alert('Unknown error! File upload failed!');
-                }
+                alert('Unknown error! File upload failed!');
+            }
         }
         
     } catch (error) {
