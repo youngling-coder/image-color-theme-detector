@@ -4,6 +4,7 @@ import socket
 
 from fastapi import FastAPI, File, UploadFile, HTTPException, Request, status
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
@@ -16,9 +17,11 @@ from schemas import HEXColor
 # Set up templates directory
 templates = Jinja2Templates(directory="templates")
 
-
 # Create an instance of the main FatsAPI application
 app = FastAPI(description="Main application")
+
+# Mount the static files directory
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Define upload directory path
 UPLOAD_DIRECTORY = "uploads"
