@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "image-mean-color-api"
+version = "0.1.0"
+description = ""
+authors = ["Dmytro Shyrokov <shyrokov.dmytro@proton.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.0"
+uvicorn = "^0.30.1"
+pillow = "^10.3.0"
+numpy = "^1.26.4"
+scikit-learn = "^1.5.0"
+matplotlib = "^3.9.0"
+black = "^24.4.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
