@@ -77,14 +77,13 @@ def get_main_image_colors(image: Image):
             hex(int(main_colors[i][2]))[2:],
         ]
 
-        # Convert colors to hex interpretation       
+        # Convert colors to hex interpretation
         for j in range(len(rgb)):
             if len(rgb[j]) == 1:
                 rgb[j] = f"0{rgb[j]}"
 
         # Combine all chanels to one hex string
         color_str = (f"#{rgb[0]}" + f"{rgb[1]}" + f"{rgb[2]}").upper()
-
 
         # Convert hex color interpretation to pydantic model
         main_colors[i] = HEXColor(hex_=color_str)
@@ -112,8 +111,7 @@ async def upload_image(file: UploadFile = File(...)):
     if file_extension.lower()[1:] not in SUPPORTED_EXTENSIONS:
         raise HTTPException(
             status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
-            detail="Unsupported file type! Supported file extensions are: " \
-            f"{", ".join([file_ext for file_ext in SUPPORTED_EXTENSIONS])}",
+            detail=f"Unsupported file type! Supported file extensions are: {", ".join([file_ext for file_ext in SUPPORTED_EXTENSIONS])}",
         )
 
     # Read image data as bytes
@@ -132,6 +130,6 @@ if __name__ == "__main__":
 
     # Get machine IP address
     IP_ADDRESS = socket.gethostbyname(socket.gethostname())
-    
+
     # Run the application
     uvicorn.run("main:app", host=IP_ADDRESS, reload=True)
