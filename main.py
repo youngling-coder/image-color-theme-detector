@@ -111,7 +111,7 @@ async def upload_image(file: UploadFile = File(...)):
     if file_extension.lower()[1:] not in SUPPORTED_EXTENSIONS:
         raise HTTPException(
             status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
-            detail=f"Unsupported file type! Supported file extensions are: {", ".join([file_ext for file_ext in SUPPORTED_EXTENSIONS])}",
+            detail=f"Unsupported file type! Supported file extensions are: {', '.join([file_ext for file_ext in SUPPORTED_EXTENSIONS])}",
         )
 
     # Read image data as bytes
