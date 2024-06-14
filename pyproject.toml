@@ -6,7 +6,7 @@ authors = ["Dmytro Shyrokov <shyrokov.dmytro@proton.me>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10"
 fastapi = "^0.111.0"
 uvicorn = "^0.30.1"
 pillow = "^10.3.0"
