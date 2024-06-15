@@ -13,7 +13,7 @@ This FastAPI application extracts the main colors from uploaded images using the
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/yourusername/image-color-extractor.git
+    git clone https://github.com/youngling-coder/image-color-extractor.git
     cd image-color-extractor
     ```
 
