@@ -1,4 +1,4 @@
-# Image Color Extractor
+# Image color theme detector
 
 This FastAPI application extracts the main colors from uploaded images using the KMeans clustering algorithm. The main colors are returned in HEX format.
 
