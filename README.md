@@ -31,18 +31,12 @@ This FastAPI application extracts the main colors from uploaded images using the
     poetry install
     ```
 
-## Usage
+## Application startup
 
-1. Start the FastAPI application:
-
-    ```sh
-    python main.py
-    ```
-
-2. Open your browser and go to `http://127.0.0.1:8000/` to access the application.
-
-3. Upload an image and view the extracted main colors in HEX format.
-
+```sh
+python main.py
+```
+    
 ## API Endpoints
 
 - **GET /**: Shows the main page where you can upload an image.
