@@ -1,0 +1,50 @@
+# Image Color Extractor
+
+This FastAPI application extracts the main colors from uploaded images using the KMeans clustering algorithm. The main colors are returned in HEX format.
+
+## Features
+
+- Upload images in `jpg`, `jpeg`, or `png` format.
+- Extract up to 5 main colors from the uploaded image.
+- Display the main colors in HEX format.
+
+## Installation
+
+1. Clone the repository:
+
+    ```sh
+    git clone https://github.com/yourusername/image-color-extractor.git
+    cd image-color-extractor
+    ```
+
+2. Create and activate a virtual environment:
+
+    ```sh
+    python3 -m venv env
+    source env/bin/activate  # On Windows, use `env\Scripts\activate`
+    ```
+
+3. Install the required dependencies:
+
+    ```sh
+    pip install poetry
+    poetry install
+    ```
+
+## Usage
+
+1. Start the FastAPI application:
+
+    ```sh
+    python main.py
+    ```
+
+2. Open your browser and go to `http://127.0.0.1:8000/` to access the application.
+
+3. Upload an image and view the extracted main colors in HEX format.
+
+## API Endpoints
+
+- **GET /**: Shows the main page where you can upload an image.
+- **POST /upload_image/**: Upload an image and get the main colors in HEX format.
+
