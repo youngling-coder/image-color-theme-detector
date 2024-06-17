@@ -125,11 +125,11 @@ async def upload_image(file: UploadFile = File(...)):
 
     return main_colors
 
-
-if __name__ == "__main__":
+# Uncomment to launch from file
+# if __name__ == "__main__":
 
     # Get machine IP address
-    IP_ADDRESS = socket.gethostbyname(socket.gethostname())
+    # IP_ADDRESS = socket.gethostbyname(socket.gethostname())
 
     # Run the application
-    uvicorn.run("main:app", host=IP_ADDRESS, reload=True)
+    # uvicorn.run("main:app", host=IP_ADDRESS, reload=True)
