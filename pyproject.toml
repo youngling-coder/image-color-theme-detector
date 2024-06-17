@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "image-mean-color-api"
+name = "image-color-theme-detector"
 version = "0.1.0"
-description = ""
+description = "This FastAPI application extracts the main colors from uploaded images using the KMeans clustering algorithm."
 authors = ["Dmytro Shyrokov <shyrokov.dmytro@proton.me>"]
 readme = "README.md"
 
