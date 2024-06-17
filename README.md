@@ -35,6 +35,13 @@ This FastAPI application extracts the main colors from uploaded images using the
 
 ## Application startup
 
+To deploy application you need to run
+```sh
+uvicorn "main:app" --host 0.0.0.0 --port $PORT
+```
+
+
+Or uncomment startup lines in python file and run
 ```sh
 python main.py
 ```
