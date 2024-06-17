@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mean Image Color</title>
     <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
-</head>
-<body>
+  </head>
+  <body>
     <h1>Detect image theme colors</h1>
     <div class="viewer" id="viewer">
-        <div class="preview" id="preview"></div>
-        <div class="color-display" id="colorDisplay"></div>
+      <div class="preview" id="preview"></div>
+      <div class="color-display" id="colorDisplay"></div>
     </div>
     <div class="uploader" id="fileUploader">
-        <div class="uploader-controls">
-            <input type="file" id="fileInput" accept="image/*">
-            <label class="control" for="fileInput">Choose File</label>
-            <button class="control" id="uploadButton" disabled>Upload</button>    
-        </div>
+      <div class="uploader-controls">
+        <input type="file" id="fileInput" accept="image/*" />
+        <label class="control" for="fileInput">Choose File</label>
+        <button class="control" id="uploadButton" disabled>Upload</button>
+        <img class="loading-image visually-hidden" src="{{ url_for('static', path='/images/loading.gif') }}"/>
+      </div>
     </div>
 
     <textarea id="clipboardTextarea"></textarea>
 
     <script src="{{ url_for('static', path='/js/script.js') }}"></script>
-</body>
+  </body>
 </html>

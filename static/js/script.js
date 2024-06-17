@@ -41,8 +41,14 @@ uploadButton.addEventListener('click', async () => {
     const file = fileInput.files[0];
     const formData = new FormData();
     formData.append('file', file);
+
+    const loadingImage = document.querySelector(".loading-image");
+    console.log(loadingImage);
     
     try {
+
+        // Unhide loading animation
+        loadingImage.classList.remove("visually-hidden");
 
         // Get host url
         const baseUrl = window.location.origin;
@@ -52,6 +58,7 @@ uploadButton.addEventListener('click', async () => {
             body: formData
         });
         
+        // Retrieve response from the server
         const resultColors = await response.json();
             
         if (response.ok) {
@@ -107,5 +114,8 @@ uploadButton.addEventListener('click', async () => {
         
     } catch (error) {
         alert('An error occurred while uploading the file.');
+    } finally {
+        // Hide loading animation
+        loadingImage.classList.add("visually-hidden");
     }
 });
