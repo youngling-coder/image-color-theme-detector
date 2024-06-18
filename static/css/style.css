@@ -27,6 +27,8 @@ body {
     height: 100%;
     filter: blur(5px);
     border-radius: 20px;
+    overflow: hidden;
+    opacity: .8;
 }
 
 .viewer {

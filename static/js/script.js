@@ -26,6 +26,12 @@ fileInput.addEventListener('change', () => {
             const img = document.createElement('img');
             img.src = e.target.result;
             preview.appendChild(img);
+
+            // Set the background image for the preview background
+            background.style.backgroundImage = `url(${e.target.result})`;
+            background.style.backgroundSize = 'cover';
+            background.style.backgroundRepeat = 'no-repeat';    
+            background.style.backgroundPosition = 'center';
         };
 
         // Read the image
@@ -74,7 +80,7 @@ uploadButton.addEventListener('click', async () => {
                 color_element.style.backgroundColor = color;
                 colorDisplay.appendChild(color_element);
             }
-            background.style.background = `linear-gradient(135deg, ${resultColors[0]["hex_"]}, ${resultColors[1]["hex_"]}, ${resultColors[2]["hex_"]}, ${resultColors[3]["hex_"]}, ${resultColors[4]["hex_"]})`;
+            // background.style.background = `linear-gradient(135deg, ${resultColors[0]["hex_"]}, ${resultColors[1]["hex_"]}, ${resultColors[2]["hex_"]}, ${resultColors[3]["hex_"]}, ${resultColors[4]["hex_"]})`;
 
             const colorBoxes = document.querySelectorAll('.color-box');
 
