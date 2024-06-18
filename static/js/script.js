@@ -43,7 +43,6 @@ uploadButton.addEventListener('click', async () => {
     formData.append('file', file);
 
     const loadingImage = document.querySelector(".loading-image");
-    console.log(loadingImage);
     
     try {
 
@@ -75,7 +74,7 @@ uploadButton.addEventListener('click', async () => {
                 color_element.style.backgroundColor = color;
                 colorDisplay.appendChild(color_element);
             }
-            viewer.style.background = `linear-gradient(135deg, ${resultColors[0]["hex_"]}, ${resultColors[1]["hex_"]}, ${resultColors[2]["hex_"]}, ${resultColors[3]["hex_"]}, ${resultColors[4]["hex_"]})`;
+            background.style.background = `linear-gradient(135deg, ${resultColors[0]["hex_"]}, ${resultColors[1]["hex_"]}, ${resultColors[2]["hex_"]}, ${resultColors[3]["hex_"]}, ${resultColors[4]["hex_"]})`;
 
             const colorBoxes = document.querySelectorAll('.color-box');
 
