@@ -23,19 +23,12 @@ app = FastAPI(description="Main application")
 # Mount the static files directory
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Define upload directory path
-UPLOAD_DIRECTORY = "uploads"
-
 # Define the image extensions that are supported by the application
 SUPPORTED_EXTENSIONS = [
     "jpg",
     "jpeg",
     "png",
 ]
-
-# Create upload directory if it does not exists
-if not os.path.exists(UPLOAD_DIRECTORY):
-    os.makedirs(UPLOAD_DIRECTORY)
 
 
 def get_main_image_colors(image: Image):
